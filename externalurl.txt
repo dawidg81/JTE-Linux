@@ -1,0 +1,2 @@
+{"errors":[["Port 25565 not open, you may need to port forward it."]],"response":"","status":"fail"}
+
