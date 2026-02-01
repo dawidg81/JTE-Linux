@@ -217,7 +217,7 @@ foreach my $sock (@{$ready}) {
         next;
     }
     
-    print "DEBUG: Socket ready for client $id\n";
+    # print "DEBUG: Socket ready for client $id\n";
     
 my $buffer;
 my $recv_result = $sock->recv($buffer, 0xFFFF);
@@ -232,15 +232,15 @@ if (!defined($recv_result) || (defined($recv_result) && length($buffer) == 0)) {
     next;  # No data available, continue to next socket
 }
 
-print "DEBUG: Received " . length($buffer) . " bytes from client $id\n";
+# print "DEBUG: Received " . length($buffer) . " bytes from client $id\n";
 
 # Process the data...    
-    print "DEBUG: recv_result=" . (defined($recv_result) ? "defined" : "undef") . 
-          " buffer_len=" . length($buffer) . 
-          " error=$!\n";
+	# print "DEBUG: recv_result=" . (defined($recv_result) ? "defined" : "undef") . 
+	#   " buffer_len=" . length($buffer) . 
+	# " error=$!\n";
     
     if (defined($recv_result) && length($buffer) > 0) {
-        print "DEBUG: Received " . length($buffer) . " bytes: ";
+	    # print "DEBUG: Received " . length($buffer) . " bytes: ";
         for (my $i = 0; $i < length($buffer) && $i < 20; $i++) {
             printf "%02X ", ord(substr($buffer, $i, 1));
         }
@@ -263,9 +263,9 @@ print "DEBUG: Received " . length($buffer) . " bytes from client $id\n";
         $server{'users'}[$id]{'buffer'} = '';
     } else {
         my $old_buffer = $server{'users'}[$id]{'buffer'} || '';
-        print "DEBUG: old_buffer_len=" . length($old_buffer) . "\n" if length($old_buffer) > 0;
+	# print "DEBUG: old_buffer_len=" . length($old_buffer) . "\n" if length($old_buffer) > 0;
         $server{'users'}[$id]{'buffer'} = &handle_packet($id, $old_buffer . $buffer);
-        print "DEBUG: remaining_buffer_len=" . length($server{'users'}[$id]{'buffer'}) . "\n";
+	# print "DEBUG: remaining_buffer_len=" . length($server{'users'}[$id]{'buffer'}) . "\n";
     }
 }
 		undef $server{'clear_messages'} if (defined($server{'clear_messages'}) && time() >= $server{'clear_messages'});

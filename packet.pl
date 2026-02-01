@@ -303,12 +303,12 @@ sub send_kick() {
 # Handles incoming packets of all kinds of messages...
 sub handle_packet() {
 	my ($id,$buffer) = @_;
-	print "DEBUG handle_packet: id=$id buffer_len=" . length($buffer) . "\n";
+	# print "DEBUG handle_packet: id=$id buffer_len=" . length($buffer) . "\n";
 	my $sock = $server{'users'}[$id]{'sock'};
 	my $type;
 	while ($buffer) {
 		($type,$buffer) = unpack("ca*",$buffer); # Get the message type.
-		print "DEBUG: packet_type=$type remaining=" . length($buffer) . "\n";
+		# print "DEBUG: packet_type=$type remaining=" . length($buffer) . "\n";
 		last if ($type < 0);
 
 		# Unknown message type recieved!!

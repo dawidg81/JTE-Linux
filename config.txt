@@ -1,9 +1,9 @@
 # Server name
-name &4Echidna Server
+name Old Testing Server
 # Server message
-motd Programmed by &cThe Echidna Tribe
+motd 2009
 # Port to host on
-port 25565
+port 25566
 # Max number of players
 max_players 16
 # 0 to not send a heartbeat
